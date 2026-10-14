@@ -1,0 +1,22 @@
+package objects;
+
+import java.util.List;
+
+public class ObjectsIngredients {
+
+    private List<String> ingredients;
+
+    public ObjectsIngredients(List<String> ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    public List<String> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(List<String> ingredients) {
+        this.ingredients = ingredients;
+    }
+
+
+}
