@@ -1,6 +1,6 @@
 package requests;
 
-import objects.ObjectsUser;
+import objects.User;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
@@ -8,7 +8,7 @@ import static org.hamcrest.Matchers.is;
 public class ChangeUser {
 
     // Успешное изменение данных пользователя
-    public String successChange(String userToken, ObjectsUser newBody, String bodyAnswer) {
+    public String successChange(String userToken, User newBody, String bodyAnswer) {
         return given()
                 .header("Content-type", "application/json")
                 .header("Authorization", userToken)
@@ -23,7 +23,7 @@ public class ChangeUser {
     }
 
     // Изменение данных пользователя без авторизации - ошибка
-    public String errorChangeWithoutAuthorization(ObjectsUser newBody) {
+    public String errorChangeWithoutAuthorization(User newBody) {
         return given()
                 .header("Content-type", "application/json")
                 .body(newBody)

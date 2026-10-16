@@ -1,27 +1,19 @@
 package tests;
 
-import objects.ObjectsUser;
+import objects.User;
 import requests.RegisterAndDelete;
-import io.restassured.RestAssured;
 import jdk.jfr.Description;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class UserTest {
+public class UserTest extends BaseApiTest {
 
-    ObjectsUser user = new ObjectsUser("test130@test.ru", "123456", "Polly");
-    ObjectsUser userWithoutName = new ObjectsUser("test130@test.ru", "123456");
+    User user = new User("test130@test.ru", "123456", "Polly");
+    User userWithoutName = new User("test130@test.ru", "123456");
     private String userToken = null;
 
     RegisterAndDelete register = new RegisterAndDelete();
-
-    @BeforeEach
-    public void setUp() {
-        RestAssured.baseURI = "https://qa-stellarburgers.education-services.ru/";
-    }
-
 
     @Test
     @DisplayName("Создание пользователя без поля name")

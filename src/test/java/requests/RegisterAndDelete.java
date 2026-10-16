@@ -1,6 +1,6 @@
 package requests;
 
-import objects.ObjectsUser;
+import objects.User;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
@@ -8,7 +8,7 @@ import static org.hamcrest.Matchers.is;
 public class RegisterAndDelete {
 
     // Успешная регистрация пользователя + получение токена
-    public String successRegisterUser(ObjectsUser user) {
+    public String successRegisterUser(User user) {
         return given()
                 .header("Content-type", "application/json")
                 .body(user)
@@ -23,7 +23,7 @@ public class RegisterAndDelete {
 
 
     // Неудачная попытка регистрации, ошибка 403
-    public String registerUserError403(ObjectsUser user, String error) {
+    public String registerUserError403(User user, String error) {
         return given()
                 .header("Content-type", "application/json")
                 .body(user)

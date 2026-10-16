@@ -1,22 +1,21 @@
 package tests;
 
-import objects.ObjectsUser;
+import objects.User;
 import requests.Login;
 import requests.RegisterAndDelete;
 import io.qameta.allure.Step;
-import io.restassured.RestAssured;
 import jdk.jfr.Description;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class LoginTest {
+public class LoginTest extends BaseApiTest {
 
-    ObjectsUser user = new ObjectsUser("test130@test.ru", "123456", "Polly");
-    ObjectsUser bodyIncorrectLogin = new ObjectsUser("test139@test.ru", "123456");
-    ObjectsUser bodyIncorrectPassword = new ObjectsUser("test130@test.ru", "111111");
-    ObjectsUser bodyCorrectLoginAndPassword = new ObjectsUser("test130@test.ru", "123456");
+    User user = new User("test130@test.ru", "123456", "Polly");
+    User bodyIncorrectLogin = new User("test139@test.ru", "123456");
+    User bodyIncorrectPassword = new User("test130@test.ru", "111111");
+    User bodyCorrectLoginAndPassword = new User("test130@test.ru", "123456");
 
     RegisterAndDelete register = new RegisterAndDelete();
     Login login = new Login();
@@ -24,8 +23,6 @@ public class LoginTest {
 
     @BeforeEach
     public void setUp() {
-        RestAssured.baseURI = "https://qa-stellarburgers.education-services.ru/";
-
         userToken = register.successRegisterUser(user);
     }
 

@@ -1,13 +1,13 @@
 package requests;
 
-import objects.ObjectsUser;
+import objects.User;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
 
 public class Login {
 
-    public String successLogin(ObjectsUser login) {
+    public String successLogin(User login) {
         return given()
                 .header("Content-type", "application/json")
                 .body(login)
@@ -18,7 +18,7 @@ public class Login {
                 .body("success", is(true)).toString();
     }
 
-    public String loginError401(ObjectsUser login) {
+    public String loginError401(User login) {
         return given()
                 .header("Content-type", "application/json")
                 .body(login)

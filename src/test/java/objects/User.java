@@ -1,25 +1,25 @@
 package objects;
 
-public class ObjectsUser {
+public class User {
 
     private String email;
     private String password;
     private String name;
 
     // Конструктор со всеми полями
-    public ObjectsUser(String email, String password, String name) {
+    public User(String email, String password, String name) {
         this.email = email;
         this.password = password;
         this.name = name;
     }
 
     // Только email и пароль
-    public ObjectsUser(String email, String password) {
+    public User(String email, String password) {
         this(email, password, "");
     }
 
     // Без параметров
-    public ObjectsUser() {
+    public User() {
     }
 
 

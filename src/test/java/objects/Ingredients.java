@@ -2,11 +2,11 @@ package objects;
 
 import java.util.List;
 
-public class ObjectsIngredients {
+public class Ingredients {
 
     private List<String> ingredients;
 
-    public ObjectsIngredients(List<String> ingredients) {
+    public Ingredients(List<String> ingredients) {
         this.ingredients = ingredients;
     }
 

@@ -1,6 +1,6 @@
 package requests;
 
-import objects.ObjectsIngredients;
+import objects.Ingredients;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
@@ -10,7 +10,7 @@ public class Order {
 
     // Создание заказа
 
-    public String successCreateOrderWithAuthorization(String userToken, ObjectsIngredients ingredients) {
+    public String successCreateOrderWithAuthorization(String userToken, Ingredients ingredients) {
         return given()
                 .header("Content-type", "application/json")
                 .header("Authorization", userToken)
@@ -24,7 +24,7 @@ public class Order {
                 .body("order._id", notNullValue()).toString();
     }
 
-    public String successCreateOrderWithoutAuthorization(ObjectsIngredients ingredients) {
+    public String successCreateOrderWithoutAuthorization(Ingredients ingredients) {
         return given()
                 .header("Content-type", "application/json")
                 .body(ingredients)
@@ -36,7 +36,7 @@ public class Order {
                 .body("order.number", notNullValue()).toString();
     }
 
-    public String errorCreateOrder(String userToken, ObjectsIngredients ingredients, String error) {
+    public String errorCreateOrder(String userToken, Ingredients ingredients, String error) {
         return given()
                 .header("Content-type", "application/json")
                 .header("Authorization", userToken)

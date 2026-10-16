@@ -1,10 +1,9 @@
 package tests;
 
-import objects.ObjectsUser;
+import objects.User;
 import requests.ChangeUser;
 import requests.RegisterAndDelete;
 import io.qameta.allure.Step;
-import io.restassured.RestAssured;
 import jdk.jfr.Description;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,12 +12,12 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ChangeUserTest {
+public class ChangeUserTest extends BaseApiTest {
 
-    ObjectsUser user = new ObjectsUser("test130@test.ru", "123456", "Polly");
-    ObjectsUser bodyNewLogin = new ObjectsUser();
-    ObjectsUser bodyNewPassword = new ObjectsUser();
-    ObjectsUser bodyNewName = new ObjectsUser();
+    User user = new User("test130@test.ru", "123456", "Polly");
+    User bodyNewLogin = new User();
+    User bodyNewPassword = new User();
+    User bodyNewName = new User();
 
     RegisterAndDelete register = new RegisterAndDelete();
     ChangeUser changeUser = new ChangeUser();
@@ -28,8 +27,6 @@ public class ChangeUserTest {
 
     @BeforeEach
     public void setUp() {
-        RestAssured.baseURI = "https://qa-stellarburgers.education-services.ru/";
-
         userToken = register.successRegisterUser(user);
     }
 

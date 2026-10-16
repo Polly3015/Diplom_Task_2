@@ -1,12 +1,11 @@
 package tests;
 
-import objects.ObjectsIngredients;
-import objects.ObjectsUser;
+import objects.Ingredients;
+import objects.User;
 import requests.Order;
 import requests.ReceiveIngredient;
 import requests.RegisterAndDelete;
 import io.qameta.allure.Step;
-import io.restassured.RestAssured;
 import jdk.jfr.Description;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,14 +14,14 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-public class ReceivingUserOrdersTest {
+public class ReceivingUserOrdersTest extends BaseApiTest{
 
-    ObjectsUser user = new ObjectsUser("test130@test.ru", "123456", "Polly");
+    User user = new User("test130@test.ru", "123456", "Polly");
 
     RegisterAndDelete register = new RegisterAndDelete();
 
     ReceiveIngredient receiveIngredient = new ReceiveIngredient();
-    ObjectsIngredients correctIngredients = new ObjectsIngredients(
+    Ingredients correctIngredients = new Ingredients(
             List.of(receiveIngredient.searchIngredient()));
 
     Order order = new Order();
@@ -31,8 +30,6 @@ public class ReceivingUserOrdersTest {
 
     @BeforeEach
     public void setUp() {
-        RestAssured.baseURI = "https://qa-stellarburgers.education-services.ru/";
-
         userToken = register.successRegisterUser(user);
         order.successCreateOrderWithAuthorization(userToken, correctIngredients);
     }
